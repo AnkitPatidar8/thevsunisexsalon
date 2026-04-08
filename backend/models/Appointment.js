@@ -1,19 +1,4 @@
 
-
-// import mongoose from "mongoose";
-
-// const appointmentSchema = new mongoose.Schema({
-//   name: String,
-//   mobile: String,
-//   service: String,
-//   stylist: String,
-//   date: String,
-//   time: String,
-// });
-
-// export default mongoose.model("Appointment", appointmentSchema);
-
-
 import mongoose from "mongoose";
 
 const appointmentSchema = new mongoose.Schema(

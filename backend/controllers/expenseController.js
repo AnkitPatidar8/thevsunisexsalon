@@ -1,37 +1,3 @@
-// import Expense from "../models/Expense.js";
-
-// /* GET Expense by Date */
-// export const getExpenseByDate = async (req, res) => {
-//   try {
-//     const { date } = req.params;
-
-//     const data = await Expense.findOne({ date });
-
-//     res.json(data?.expenses || []);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// /* ADD / UPDATE Expense */
-// export const saveExpense = async (req, res) => {
-//   try {
-//     const { date, expenses } = req.body;
-
-//     let existing = await Expense.findOne({ date });
-
-//     if (existing) {
-//       existing.expenses = expenses;
-//       await existing.save();
-//     } else {
-//       await Expense.create({ date, expenses });
-//     }
-
-//     res.json({ success: true });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
 
 
 import Expense from "../models/Expense.js";
