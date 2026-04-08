@@ -1,0 +1,14 @@
+
+
+
+import { Navigate } from "react-router-dom";
+
+export default function ProtectedRoute({ children }) {
+  const isLoggedIn = localStorage.getItem("adminLoggedIn");
+
+  if (isLoggedIn !== "true") {
+    return <Navigate to="/admin" replace />;
+  }
+
+  return children;
+}
