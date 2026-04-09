@@ -23,7 +23,7 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      const url = `${API}/admin/login`;
+      const url = `${API}/api/admin/login`;
       console.log("LOGIN URL 👉", url);
 
       const res = await fetch(url, {
