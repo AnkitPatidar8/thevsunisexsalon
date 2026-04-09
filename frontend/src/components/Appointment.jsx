@@ -789,7 +789,7 @@ export default function AppointmentModal({ open, onClose }) {
   const fetchBookedSlots = async (selectedDate) => {
     try {
       const res = await fetch(
-        `${API}/appointments/booked?date=${selectedDate}`,
+        `${API}/api/appointments/booked?date=${selectedDate}`,
       );
       const data = await res.json();
       setBookedSlots(data);
@@ -851,7 +851,7 @@ export default function AppointmentModal({ open, onClose }) {
     try {
       setLoading(true);
 
-      const res = await fetch(`${API}/appointments`, {
+      const res = await fetch(`${API}/api/appointments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
