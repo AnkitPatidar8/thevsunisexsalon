@@ -13,7 +13,7 @@ import pdfRoutes from "./routes/pdfRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import instagramRoutes from "./routes/instagramRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
-
+import protectedRoutes from "./routes/protectedRoutes.js";
 /* ===== INIT ===== */
 const app = express();
 
@@ -37,6 +37,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/daily", dailyRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/pdf", pdfRoutes);
+app.use("/api/admin", protectedRoutes);
 
 /* 🔥 IMPORTANT: Keep generic routes LAST */
 app.use("/api/instagram", instagramRoutes);
