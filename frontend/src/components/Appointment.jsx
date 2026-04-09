@@ -1,5 +1,3 @@
-
-
 // import { CalendarDays, User, Scissors, Clock, X } from "lucide-react";
 // import { useState } from "react";
 // import Swal from "sweetalert2";
@@ -203,7 +201,6 @@
 //     </>
 //   );
 // }
-
 
 // import { X } from "lucide-react";
 // import { useState } from "react";
@@ -465,7 +462,6 @@
 //     </>
 //   );
 // }
-
 
 // import { X } from "lucide-react";
 // import { useState, useEffect } from "react";
@@ -758,7 +754,6 @@
 //   );
 // }
 
-
 import { X } from "lucide-react";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -794,7 +789,7 @@ export default function AppointmentModal({ open, onClose }) {
   const fetchBookedSlots = async (selectedDate) => {
     try {
       const res = await fetch(
-        `${API}/appointments/booked?date=${selectedDate}`
+        `${API}/appointments/booked?date=${selectedDate}`,
       );
       const data = await res.json();
       setBookedSlots(data);
@@ -907,16 +902,12 @@ export default function AppointmentModal({ open, onClose }) {
 
   if (!open) return null;
 
-  const isFormValid =
-    name && mobile && service && stylist && date && time;
+  const isFormValid = name && mobile && service && stylist && date && time;
 
   return (
     <>
       {/* Overlay */}
-      <div
-        onClick={onClose}
-        className="fixed inset-0 bg-black/70 z-40"
-      />
+      <div onClick={onClose} className="fixed inset-0 bg-black/70 z-40" />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
@@ -1005,14 +996,11 @@ export default function AppointmentModal({ open, onClose }) {
               <option value="">Select Time</option>
 
               {getFilteredSlots().map((slot) => {
-                const isBooked = bookedSlots.includes(slot);
+                const isBooked =
+                  Array.isArray(bookedSlots) && bookedSlots.includes(slot);
 
                 return (
-                  <option
-                    key={slot}
-                    value={slot}
-                    disabled={isBooked}
-                  >
+                  <option key={slot} value={slot} disabled={isBooked}>
                     {isBooked ? `${slot} (Booked)` : slot}
                   </option>
                 );
