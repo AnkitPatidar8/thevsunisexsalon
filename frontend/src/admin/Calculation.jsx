@@ -31,7 +31,7 @@ export default function Calculation() {
  useEffect(() => {
   if (!date) return;
 
-  fetch(`${API}/expense/${date}`)
+  fetch(`${API}/api/expense/${date}`)
     .then(res => res.json())
     .then(data => {
       setExpenses(data || []);
@@ -58,7 +58,7 @@ export default function Calculation() {
   useEffect(() => {
     if (!date) return;
 
-    fetch(`${API}/daily/${date}`)
+    fetch(`${API}/api/daily/${date}`)
       .then((res) => res.json())
       .then((data) => {
         if (data) {
@@ -75,7 +75,7 @@ export default function Calculation() {
 
   /* Sync DB */
   const syncToDB = async (updatedClients) => {
-    await fetch(`${API}/daily`, {
+    await fetch(`${API}/api/daily`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
