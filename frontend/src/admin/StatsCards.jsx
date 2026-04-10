@@ -14,14 +14,14 @@ export default function StatsCards() {
     const today = new Date().toISOString().split("T")[0];
 
     // Total Appointments
-    fetch(`${API}/appointments`)
+    fetch(`${API}/api/appointments`)
       .then((res) => res.json())
       .then((data) => {
         setTotalBookings(data.length);
       });
 
     // Today Business (Calculation.jsx data)
-    fetch(`${API}/daily/${today}`)
+    fetch(`${API}/api/daily/${today}`)
       .then((res) => res.json())
       .then((data) => {
 

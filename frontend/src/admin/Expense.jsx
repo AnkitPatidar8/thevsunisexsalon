@@ -304,7 +304,7 @@ export default function PremiumExpense() {
 
   const syncToDB = async (updated) => {
     try {
-      await fetch(`${API}/expense`, {
+      await fetch(`${API}/api/expense`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ date, expenses: updated }),
