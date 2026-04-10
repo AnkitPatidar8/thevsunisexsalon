@@ -291,7 +291,7 @@ export default function PremiumExpense() {
 
     const fetchData = async () => {
       try {
-        const res = await fetch(`${API}/expense/${date}`);
+        const res = await fetch(`${API}/api/expense/${date}`);
         const data = await res.json();
         setExpenses(data.expenses || []);
       } catch (err) {

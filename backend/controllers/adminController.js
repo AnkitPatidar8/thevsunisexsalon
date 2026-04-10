@@ -34,6 +34,68 @@
 //   }
 // };
 
+// import bcrypt from "bcryptjs";
+// import jwt from "jsonwebtoken";
+
+// export const adminLogin = async (req, res) => {
+//   try {
+//     let { username, password } = req.body;
+
+//     // 🔒 safety check
+//     if (!username || !password) {
+//       return res.status(400).json({
+//         success: false,
+//         msg: "Username and password required",
+//       });
+//     }
+
+//     username = username.trim();
+//     password = password.trim();
+
+//     // 🔐 check username
+//     if (username !== process.env.ADMIN_USERNAME) {
+//       return res.status(401).json({
+//         success: false,
+//         msg: "Invalid username or password",
+//       });
+//     }
+
+//     // 🔐 check password (hashed)
+//     const isMatch = await bcrypt.compare(
+//       password,
+//       process.env.ADMIN_PASSWORD
+//     );
+
+//     if (!isMatch) {
+//       return res.status(401).json({
+//         success: false,
+//         msg: "Invalid username or password",
+//       });
+//     }
+
+//     // 🎟️ generate token
+//     const token = jwt.sign(
+//       { role: "admin" },
+//       process.env.JWT_SECRET,
+//       { expiresIn: "1d" }
+//     );
+
+//     return res.json({
+//       success: true,
+//       token,
+//     });
+
+//   } catch (error) {
+//     console.error("🔥 Admin Login Error:", error.message);
+
+//     return res.status(500).json({
+//       success: false,
+//       msg: "Server Error",
+//     });
+//   }
+// };
+
+
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -41,26 +103,25 @@ export const adminLogin = async (req, res) => {
   try {
     let { username, password } = req.body;
 
-    // 🔒 safety check
     if (!username || !password) {
       return res.status(400).json({
         success: false,
-        msg: "Username and password required",
+        message: "All fields required",
       });
     }
 
     username = username.trim();
     password = password.trim();
 
-    // 🔐 check username
+    /* CHECK USERNAME */
     if (username !== process.env.ADMIN_USERNAME) {
       return res.status(401).json({
         success: false,
-        msg: "Invalid username or password",
+        message: "Invalid credentials",
       });
     }
 
-    // 🔐 check password (hashed)
+    /* CHECK PASSWORD */
     const isMatch = await bcrypt.compare(
       password,
       process.env.ADMIN_PASSWORD
@@ -69,28 +130,24 @@ export const adminLogin = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({
         success: false,
-        msg: "Invalid username or password",
+        message: "Invalid credentials",
       });
     }
 
-    // 🎟️ generate token
+    /* TOKEN */
     const token = jwt.sign(
       { role: "admin" },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
 
-    return res.json({
+    res.json({
       success: true,
       token,
     });
 
   } catch (error) {
-    console.error("🔥 Admin Login Error:", error.message);
-
-    return res.status(500).json({
-      success: false,
-      msg: "Server Error",
-    });
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
   }
 };

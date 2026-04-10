@@ -13,9 +13,7 @@ import { adminLogin } from "../controllers/adminController.js";
 
 const router = express.Router();
 
-/* ===== ADMIN AUTH ROUTES ===== */
-
-// 🔐 Admin Login
+/* LOGIN */
 router.post("/login", adminLogin);
 
 export default router;

@@ -13,7 +13,7 @@ import pdfRoutes from "./routes/pdfRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import instagramRoutes from "./routes/instagramRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
-import protectedRoutes from "./routes/protectedRoutes.js";
+
 /* ===== INIT ===== */
 const app = express();
 
@@ -31,13 +31,15 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next(); 
 });
+
+
 /* ===== ROUTES ===== */
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/daily", dailyRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/pdf", pdfRoutes);
-app.use("/api/admin", protectedRoutes);
+
 
 /* 🔥 IMPORTANT: Keep generic routes LAST */
 app.use("/api/instagram", instagramRoutes);
@@ -49,7 +51,12 @@ app.get("/", (req, res) => {
 });
 
 
-/* ===== 404 HANDLER (VERY IMPORTANT) ===== */
+/* ✅ TEST ROUTE */
+app.get("/test", (req, res) => {
+  res.json({ msg: "Test working ✅" });
+});
+
+/* ❌ 404 ALWAYS LAST */
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -71,4 +78,5 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
+  
 });
