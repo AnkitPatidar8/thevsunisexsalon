@@ -75,14 +75,14 @@ function Slide({ image, video }) {
 function HeroContent() {
   return (
     <div className="relative text-center px-6">
-      <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+      <h1 className="text-2xl md:text-5xl lg:text-4xl font-bold mb-4 text-white">
         THE VS UNISEX SALON
       </h1>
 
       
 
       <button
-          
+          className=" md:block bg-yellow-500 text-black px-5 py-2 rounded-xl hover:scale-105 transition"
           >
             Book Now
           </button>

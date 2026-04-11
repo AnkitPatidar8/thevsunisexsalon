@@ -966,10 +966,11 @@ export default function AppointmentModal({ open, onClose }) {
               className="w-full p-3 rounded-xl bg-zinc-800 text-white"
             >
               <option value="">Select Stylist</option>
-              <option>Vishal</option>
+              <option>anjali</option>
               <option>Shubham</option>
+              <option>Vishal</option>
               <option>Yash</option>
-              <option>Rishika</option>
+              <option>Sumit</option>
             </select>
 
             {/* Date */}
