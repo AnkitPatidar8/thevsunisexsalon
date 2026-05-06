@@ -9,14 +9,14 @@ const team = [
     name: "Anjali Pal",
     role: "Beauty Makeup Artist",
     experience: "7+ Years Experience • 485+ Clients",
-    image: "/images/anjali.jpeg",
+    image: "/images/anjalin.jpeg",
     rating: "5.0",
   },
   {
     name: "Shubham Sen",
     role: "Hair Specialist",
     experience: "5+ Years Experience • 3545+ Clients",
-    image: "/images/shubham.jpeg",
+    image: "/images/shubhamn.jpeg",
     rating: "5.0",
   },
   {
